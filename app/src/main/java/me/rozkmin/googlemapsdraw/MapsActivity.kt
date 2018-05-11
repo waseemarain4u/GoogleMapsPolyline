@@ -37,7 +37,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         this.googleMap = googleMap
 
-        val krk = LatLng(50.052, 19.944)
+        val krk = LatLng(24.830531, 67.099434)
+        val des = LatLng(24.831934, 67.080422)
         this.googleMap.addMarker(
                 MarkerOptions()
                         .position(krk)
@@ -46,22 +47,22 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         this.googleMap.addMarker(
                 MarkerOptions()
-                        .position(krk)
+                        .position(des)
                         .draggable(true)
                         .title("Drag me")
         )
-
+        getPolylineToRoute(des, krk)
         this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(krk, 13f))
 
-        this.googleMap.setOnMarkerDragListener(object : GoogleMap.OnMarkerDragListener {
+        /*this.googleMap.setOnMarkerDragListener(object : GoogleMap.OnMarkerDragListener {
             override fun onMarkerDragEnd(marker: Marker) {
-                getPolylineToRoute(marker.position, krk)
+
             }
 
             override fun onMarkerDragStart(p0: Marker?) {}
 
             override fun onMarkerDrag(p0: Marker?) {}
-        })
+        })*/
     }
 
     private val mutableList: MutableList<Polyline> = mutableListOf()
